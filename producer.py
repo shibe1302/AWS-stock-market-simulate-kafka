@@ -6,7 +6,7 @@ import json
 
 class DataStream:
   def __init__(self):
-    self.producer = KafkaProducer(bootstrap_servers=['localhost:9092'], #change ip here
+    self.producer = KafkaProducer(bootstrap_servers=['18.212.134.208:9092'], #change ip here
                          value_serializer=lambda x: 
                          dumps(x).encode('utf-8'))
     self.producer.flush()
@@ -16,9 +16,9 @@ class DataStream:
     df = pd.read_csv("indexProcessed.csv")
     out=df[df['Index']=='HSI']
     for x in range(0,len(out)):
-        self.producer.send('tp1', value=out.iloc[x].to_dict()['Open'])
+        self.producer.send('shibe1', value=out.iloc[x].to_dict()['Open'])
         print(out.iloc[x].to_dict()['Open'])
-        sleep(3)
+        sleep(5)
     
 
 lmao=DataStream()

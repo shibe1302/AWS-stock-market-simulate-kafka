@@ -60,5 +60,8 @@ Decorator for disconnect
 def disconnect():
     print('Client disconnected',  request.sid)
 
+
+      
 if __name__ == '__main__':
+    app.run(host="0.0.0.0",port=3008)
     socketio.run(app)
