@@ -6,7 +6,7 @@ import json
 
 class DataStream:
   def __init__(self):
-    self.producer = KafkaProducer(bootstrap_servers=['18.212.134.208:9092'], #change ip here
+    self.producer = KafkaProducer(bootstrap_servers=['localhost:9092'], #change ip here
                          value_serializer=lambda x: 
                          dumps(x).encode('utf-8'))
     self.producer.flush()

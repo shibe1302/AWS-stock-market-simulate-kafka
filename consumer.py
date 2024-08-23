@@ -6,7 +6,7 @@ import json
 class GetDataStream:
   def __init__(self):
     self.consumer = KafkaConsumer('shibe1',
-        bootstrap_servers=['18.212.134.208:9092'], #add your IP here
+        bootstrap_servers=['localhost:9092'], #add your IP here
         value_deserializer=lambda x: loads(x.decode('utf-8')))
     self.currentData=2000
 
