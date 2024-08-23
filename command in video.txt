@@ -1,0 +1,24 @@
+----- start sever -----------
+------> cd {your kafka folder name}
+KAFKA_CLUSTER_ID="$(bin/kafka-storage.sh random-uuid)"
+
+bin/kafka-storage.sh format -t $KAFKA_CLUSTER_ID -c config/kraft/server.properties
+
+export KAFKA_HEAP_OPTS="-Xmx256M -Xms128M"
+
+bin/kafka-server-start.sh config/kraft/server.properties
+
+
+Create the topic:
+-----------------------------
+
+bin/kafka-topics.sh --create --topic shibe1 --bootstrap-server localhost:9092 --partitions 1
+
+Start Producer:
+--------------------------
+bin/kafka-console-producer.sh --topic shibe1 --bootstrap-server localhost:9092
+
+Start Consumer:
+-------------------------
+bin/kafka-console-consumer.sh --topic shibe1  --bootstrap-server localhost:9092
+
